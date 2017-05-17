@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
-
-<body>
-  <form ng-if="$ctrl.editOn" ng-submit="$ctrl.submitEdit()">
-    Edit this post!
-    <label>Title:<input ng-model="$ctrl.epost.title"></label>
-    <label>Description:<input ng-model="$ctrl.epost.description"></label>
-    <label>Image Url:<input ng-model="$ctrl.epost.item_image"></label>
-    <label>Price:<input ng-model="$ctrl.epost.price"></label>
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-  </form>
-
-  <ul class="nav nav-pills">
-    <li role="presentation" class="active">
+  <h1 class="dingo">Tom's List</h1>
+  <ul class="nav nav-pills dingo">
+    <div role="presentation" class="active">
       <input type="search" ng-model="search" placeholder="Filter">
-    </li>
-    <li class="form-inline">
+    </div>
+    <div class="form-inline">
       <label for="sort">  Sort by </label>
       <select class="form-control" ng-model="sorted" id="sort">
       <option name="sorted" value="-created_at">latest</option>
@@ -28,8 +12,20 @@
       <option name="sorted" value="-price">costliest</option>
       <option name="sorted" value="price">cheapest</option>
     </select>
-    </li>
+  </div>
   </ul>
+  <br>
+  <form class="dingo" ng-if="$ctrl.editOn" ng-submit="$ctrl.submitEdit()">
+    Edit this post!<br>
+    <label>Title:<input class="form-control" ng-model="$ctrl.epost.title"></label><br>
+    <label>Description:<textarea class="form-control" ng-model="$ctrl.epost.description"></textarea></label><br>
+    <label>Image Url:<input class="form-control" ng-model="$ctrl.epost.item_image"></label><br>
+    <label>Price:<input class="form-control" ng-model="$ctrl.epost.price"></label><br>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+  <br ng-if="$ctrl.editOn">
+
+
 
   <div ng-repeat="post in $ctrl.posts | filter:search | orderBy:sorted">
 
@@ -46,7 +42,7 @@
       </h4>
           <a ng-click="$ctrl.edit(post.id)">edit</a> | <a ng-click="$ctrl.deletes(post.id)">delete</a>
           <div class="text-right">
-            {{ post.price }}
+            ${{ post.price }}
           </div>
           <p>
             {{ post.description }}
@@ -61,14 +57,11 @@
 
 
 
-  <form ng-if="$ctrl.newPost" ng-submit="$ctrl.submitNew()">
-    Add a new post!
-    <label>Title:<input ng-model="$ctrl.npost.title"></label>
-    <label>Description:<input ng-model="$ctrl.npost.description"></label>
-    <label>Image Url:<input ng-model="$ctrl.npost.item_image"></label>
-    <label>Price:<input ng-model="$ctrl.npost.price"></label>
+  <form class="dingo" ng-if="$ctrl.newPost" ng-submit="$ctrl.submitNew()">
+    Add a new post!<br>
+    <label>Title:<input class="form-control" ng-model="$ctrl.npost.title"></label><br>
+    <label>Description:<textarea class="form-control" ng-model="$ctrl.npost.description"></textarea><br>
+    <label>Image Url:<input class="form-control" ng-model="$ctrl.npost.item_image"></label><br>
+    <label>Price:<input class="form-control" ng-model="$ctrl.npost.price"></label><br>
     <button type="submit" class="btn btn-primary">Create Ad</button>
   </form>
-</body>
-
-</html>
