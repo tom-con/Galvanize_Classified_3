@@ -23,6 +23,7 @@
     <label>Price:<input class="form-control" ng-model="$ctrl.epost.price"></label><br>
     <button type="submit" class="btn btn-primary">Save Changes</button>
   </form>
+  <a class="dingo" href="#newpost">Add New Post</a>
   <br ng-if="$ctrl.editOn">
 
 
@@ -57,7 +58,7 @@
 
 
 
-  <form class="dingo" ng-if="$ctrl.newPost" ng-submit="$ctrl.submitNew()">
+  <form id="newpost" class="dingo" ng-if="$ctrl.newPost" ng-submit="$ctrl.submitNew()">
     Add a new post!<br>
     <label>Title:<input class="form-control" ng-model="$ctrl.npost.title"></label><br>
     <label>Description:<textarea class="form-control" ng-model="$ctrl.npost.description"></textarea><br>
